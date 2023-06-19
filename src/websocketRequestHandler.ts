@@ -59,6 +59,7 @@ export const websocketRequestHandler = <T>(
         const error = _error as Error;
         console.error('Error:', error);
         await sendMessageToClient('ERROR', {
+            statusCode: error?.statusCode ?? 500,
             message: `The following Error occurred: ${isProd()
                 ? error.prodErrorMessage ?? "Internal Server Error"
                 : error.message

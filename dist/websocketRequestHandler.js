@@ -44,6 +44,7 @@ const websocketRequestHandler = (handler, verify) => async (event) => {
         const error = _error;
         console.error('Error:', error);
         await sendMessageToClient('ERROR', {
+            statusCode: error?.statusCode ?? 500,
             message: `The following Error occurred: ${(0, rest_api_utils_1.isProd)()
                 ? error.prodErrorMessage ?? "Internal Server Error"
                 : error.message}`
