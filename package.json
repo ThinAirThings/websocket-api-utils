@@ -1,6 +1,6 @@
 {
   "name": "@thinairthings/websocket-api-utils",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Basic websocket api utilities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
