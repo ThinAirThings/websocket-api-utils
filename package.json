@@ -19,9 +19,9 @@
   "author": "Dan Lannan",
   "license": "MIT",
   "dependencies": {
-    "@aws-sdk/client-apigatewaymanagementapi": "^3.329.0",
-    "aws-lambda": "^1.0.7",
-    "nanoid": "^3.3.6"
+    "@aws-sdk/client-apigatewaymanagementapi": "^3.354.0",
+    "@thinairthings/rest-api-utils": "^1.0.16",
+    "aws-jwt-verify": "^4.0.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.115"

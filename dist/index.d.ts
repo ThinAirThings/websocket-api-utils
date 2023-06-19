@@ -1,1 +1,1 @@
-export * from './wsRequestHandler';
+export * from './websocketRequestHandler';
