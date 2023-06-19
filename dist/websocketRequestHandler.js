@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.wsRequestHandler = void 0;
+exports.websocketRequestHandler = void 0;
 const client_apigatewaymanagementapi_1 = require("@aws-sdk/client-apigatewaymanagementapi");
 const rest_api_utils_1 = require("@thinairthings/rest-api-utils");
 const aws_jwt_verify_1 = require("aws-jwt-verify");
@@ -17,7 +17,7 @@ const sendMessageToClient = async (apigw_client, connectionId, messageId, status
 const createSendMessageToClient = ({ apigw_client, connectionId, messageId }) => async (status, payload) => {
     await sendMessageToClient(apigw_client, connectionId, messageId, status, payload);
 };
-const wsRequestHandler = (handler, verify) => async (event) => {
+const websocketRequestHandler = (handler, verify) => async (event) => {
     const connectionId = event.requestContext.connectionId;
     const apigw_client = new client_apigatewaymanagementapi_1.ApiGatewayManagementApiClient({ endpoint: `https://${event.requestContext.domainName}` });
     const payload = (typeof event.body === 'object' ? event.body : JSON.parse(event.body));
@@ -50,4 +50,4 @@ const wsRequestHandler = (handler, verify) => async (event) => {
         });
     }
 };
-exports.wsRequestHandler = wsRequestHandler;
+exports.websocketRequestHandler = websocketRequestHandler;
