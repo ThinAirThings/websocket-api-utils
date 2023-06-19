@@ -38,7 +38,7 @@ const websocketRequestHandler = (handler, verify) => async (event) => {
                 throw new rest_api_utils_1.UnauthorizedError(e.message);
             }
         }
-        await handler(payload, sendMessageToClient);
+        await handler({ payload, sendMessageToClient });
     }
     catch (_error) {
         const error = _error;

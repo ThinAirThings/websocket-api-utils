@@ -31,8 +31,8 @@ const createSendMessageToClient = ({
 }) => async <P extends Record<string, any>>(status: 'RUNNING'|'ERROR'|'COMPLETE', payload: P) => {
     await sendMessageToClient(apigw_client, connectionId, messageId, status, payload)
 }
-export const websocketRequestHandler = (
-    handler: (payload: any, sendMessageToClient: ReturnType<typeof createSendMessageToClient>)=>Promise<void>,
+export const websocketRequestHandler = <T>(
+    handler: ({payload, sendMessageToClient}:{payload: T, sendMessageToClient: ReturnType<typeof createSendMessageToClient>})=>Promise<void>,
     verify?: boolean
 ) => async (event: APIGatewayProxyEvent) => {
     const connectionId = event.requestContext.connectionId!;
@@ -54,7 +54,7 @@ export const websocketRequestHandler = (
                 throw new UnauthorizedError(e.message)
             }
         }
-        await handler(payload, sendMessageToClient)
+        await handler({payload, sendMessageToClient})
     } catch (_error) {
         const error = _error as Error;
         console.error('Error:', error);
