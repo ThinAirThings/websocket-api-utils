@@ -48,7 +48,7 @@ export const websocketRequestHandler = <T>(
                     userPoolId: process.env.COGNITO__USERPOOL_ID!,
                     clientId: process.env.COGNITO__CLIENT_ID!,
                     tokenUse: 'access',
-                }).verify(payload.accessToken)
+                }).verify(payload.authorization)
             } catch (_e) {
                 const e = _e as Error
                 throw new UnauthorizedError(e.message)
